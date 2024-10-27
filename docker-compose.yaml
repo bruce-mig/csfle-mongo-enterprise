@@ -1,0 +1,14 @@
+services:
+  mongodb:
+    image: mongodb/mongodb-enterprise-server:latest
+    container_name: mongo_db
+    ports:
+      - "27017:27017"
+#    environment:
+#      - MONGO_INITDB_ROOT_USERNAME=me
+#      - MONGO_INITDB_ROOT_PASSWORD=secret
+    networks:
+      - mongo-net
+
+networks:
+  mongo-net:

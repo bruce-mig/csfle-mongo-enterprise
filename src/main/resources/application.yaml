@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: mongodb-csfle
+  data:
+    mongodb:
+      vault:
+        uri: mongodb://localhost
+      storage:
+        uri: mongodb://localhost
+#      database: mydb
+#      username: me
+#      password: secret
+#      authentication-database: admin
+crypt:
+  shared:
+    lib:
+      path: /home/polux/Software/mongo_crypt_shared_v1-linux-x86_64-enterprise-debian11-7.0.2/lib/mongo_crypt_v1.so
+
+mongodb:
+  key:
+    vault:
+      db: encryption
+      coll: keyVault
+  kms:
+    provider: local
+  master:
+    key:
+      file:
+        path: ./master-key.txt
