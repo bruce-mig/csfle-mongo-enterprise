@@ -8,9 +8,8 @@ import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.MongoNamespace;
 import jakarta.annotation.PostConstruct;
+import lombok.extern.slf4j.Slf4j;
 import org.bson.BsonDocument;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.mongo.MongoClientSettingsBuilderCustomizer;
 import org.springframework.context.annotation.Bean;
@@ -32,9 +31,9 @@ import static java.util.stream.Collectors.toMap;
  */
 @Configuration
 @DependsOn("keyVaultAndDekSetup")
+@Slf4j
 public class MongoDBSecureClientConfiguration {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(MongoDBSecureClientConfiguration.class);
     private final KmsService kmsService;
     private final SchemaService schemaService;
     @Value("${crypt.shared.lib.path}")
@@ -61,13 +60,13 @@ public class MongoDBSecureClientConfiguration {
 
     @Bean
     public MongoClientSettings mongoClientSettings() {
-        LOGGER.info("=> Creating the MongoClientSettings for the encrypted collections.");
+        log.info("=> Creating the MongoClientSettings for the encrypted collections.");
         return MongoClientSettings.builder().applyConnectionString(new ConnectionString(CONNECTION_STR_DATA)).build();
     }
 
     @Bean
     public MongoClientSettingsBuilderCustomizer customizer(MappingContext mappingContext) {
-        LOGGER.info("=> Creating the MongoClientSettingsBuilderCustomizer.");
+        log.info("=> Creating the MongoClientSettingsBuilderCustomizer.");
         return builder -> {
             MongoJsonSchemaCreator schemaCreator = MongoJsonSchemaCreator.create(mappingContext);
             Map<String, BsonDocument> schemaMap = schemaService.generateSchemasMap(schemaCreator)
