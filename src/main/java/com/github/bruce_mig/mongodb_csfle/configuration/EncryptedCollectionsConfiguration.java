@@ -14,4 +14,5 @@ public class EncryptedCollectionsConfiguration {
     public static final List<EncryptedEntity> encryptedEntities = List.of(
             new EncryptedEntity("mydb", "persons", PersonEntity.class, "personDEK"),
             new EncryptedEntity("mydb", "companies", CompanyEntity.class, "companyDEK"));
+    // todo: modify for more entitities
 }
