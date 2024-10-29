@@ -7,7 +7,7 @@ spring:
         uri: mongodb://localhost
       storage:
         uri: mongodb://localhost
-#      database: mydb
+      database: mydb
 #      username: me
 #      password: secret
 #      authentication-database: admin
@@ -27,3 +27,13 @@ mongodb:
     key:
       file:
         path: ./master-key.txt
+logging:
+  level:
+    root: INFO
+    org:
+      springframework:
+        jdbc: INFO
+    com:
+      github:
+        bruce_mig:
+          mongodb_csfle: DEBUG
