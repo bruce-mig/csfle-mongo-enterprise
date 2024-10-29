@@ -51,7 +51,7 @@ You can create a new cluster on MongoDB Atlas or, for testing and local developm
 ephemeral local single node replica set with the following command:
 
 ```bash
-docker run --rm -d -p 27017:27017 -h $(hostname) --name mongo mongo:7.0.2 --replSet=RS && \
+docker run --rm -d -p 27017:27017 -h $(hostname) --name mongo mongodb/mongodb-enterprise-server:latest --replSet=RS && \
 sleep 5 && \
 docker exec mongo mongosh --quiet --eval "rs.initiate();"
 ```
