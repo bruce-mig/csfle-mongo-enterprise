@@ -21,14 +21,15 @@ Here are a few features in this repository:
 
 # Prerequisites
 
-- Java 17 (can't use Java 21 yet because Spring Boot 3.1.4 is not compatible)
+- Java 21
+- Spring Boot 3.3.5
 - [MongoDB Cluster](https://www.mongodb.com/atlas/database) v7.0.2 or higher.
 - [MongoDB Automatic Encryption Shared Library](https://www.mongodb.com/docs/manual/core/queryable-encryption/reference/shared-library/#download-the-automatic-encryption-shared-library)
   v7.0.2 or higher.
 
 # Getting Started
 
-Update the [mongodb.properties](src%2Fmain%2Fresources%2Fmongodb.properties) with your
+Update the [application.yaml](src%2Fmain%2Fresources%2Fapplication.yaml) with your
 [MongoDB URIs](https://github.com/MaBeuLux88/mongodb-java-spring-boot-csfle#mongodb) and
 [MongoDB Automatic Encryption Shared library path](https://github.com/MaBeuLux88/mongodb-java-spring-boot-csfle#mongodb-automatic-encryption-shared-library).
 
@@ -68,7 +69,7 @@ to [download](https://www.mongodb.com/docs/manual/core/queryable-encryption/refe
 and extract the shared library in the folder of your choice.
 
 ```properties
-crypt.shared.lib.path=/home/polux/Software/mongo_crypt_shared_v1-linux-x86_64-enterprise-debian11-7.0.2/lib/mongo_crypt_v1.so
+crypt.shared.lib.path=software/mongo_crypt_shared_v1-linux-x86_64-enterprise-ubuntu2204-8.0.3/lib/mongo_crypt_v1.so
 ```
 
 # Test REST API
