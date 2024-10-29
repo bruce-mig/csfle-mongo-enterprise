@@ -4,9 +4,12 @@ services:
     container_name: mongo_db
     ports:
       - "27017:27017"
-#    environment:
+    environment:
+      - LD_LIBRARY_PATH=/usr/local/lib
 #      - MONGO_INITDB_ROOT_USERNAME=me
 #      - MONGO_INITDB_ROOT_PASSWORD=secret
+    volumes:
+      - ./software/mongo_crypt_shared_v1-linux-x86_64-enterprise-ubuntu2204-8.0.3/lib/mongo_crypt_v1.so:/usr/local/lib/mongo_crypt_v1.so
     networks:
       - mongo-net
 
