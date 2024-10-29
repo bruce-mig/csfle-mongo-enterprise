@@ -5,6 +5,7 @@ target/
 !**/src/test/**/target/
 software
 master-key.txt
+set-env.sh
 
 ### STS ###
 .apt_generated

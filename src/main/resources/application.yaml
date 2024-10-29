@@ -4,23 +4,23 @@ spring:
   data:
     mongodb:
       vault:
-        uri: mongodb://localhost
+        uri: ${VAULT_URI}
       storage:
-        uri: mongodb://localhost
-      database: mydb
-#      username: me
-#      password: secret
-#      authentication-database: admin
+        uri: ${STORAGE_URI}
+      database: ${MONGODB_DBNAME}
+      username: ${MONGODB_USER}
+      password: ${MONGODB_PASSWORD}
+      authentication-database: ${MONGODB_AUTHDB_NAME}
 crypt:
   shared:
     lib:
-      path: software/mongo_crypt_shared_v1-linux-x86_64-enterprise-ubuntu2204-8.0.3/lib/mongo_crypt_v1.so
+      path: ${CRYPT_SHARED_LIB_PATH}
 
 mongodb:
   key:
     vault:
-      db: encryption
-      coll: keyVault
+      db: ${KEY_VAULT_DB}
+      coll: ${KEY_VAULT_COLL}
   kms:
     provider: local
   master:
