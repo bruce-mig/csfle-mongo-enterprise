@@ -4,6 +4,7 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 software
+master-key.txt
 
 ### STS ###
 .apt_generated
