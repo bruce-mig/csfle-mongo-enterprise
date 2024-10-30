@@ -6,6 +6,8 @@ target/
 software
 master-key.txt
 set-env.sh
+app/vault/keys
+app/vault/data
 
 ### STS ###
 .apt_generated

@@ -1,10 +1,8 @@
 package com.github.bruce_mig.mongodb_csfle.csfleServiceImpl;
 
 import com.github.bruce_mig.mongodb_csfle.csfleService.KmsService;
-import com.github.bruce_mig.mongodb_csfle.csfleService.MasterKeyService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -19,21 +17,19 @@ import java.util.Map;
  */
 @Service
 @Slf4j
+@RequiredArgsConstructor
 public class KmsServiceImpl implements KmsService {
 
-    private final MasterKeyService masterKeyService;
+    private final VaultMasterKeyService masterKeyService;
     @Value("${mongodb.kms.provider}")
     private String LOCAL;
 
-    public KmsServiceImpl(MasterKeyService masterKeyService) {
-        this.masterKeyService = masterKeyService;
-    }
 
     public Map<String, Map<String, Object>> getKmsProviders() {
         log.info("=> Creating local Key Management System using the master key.");
         return new HashMap<>() {{
             put(LOCAL, new HashMap<>() {{
-                put("key", masterKeyService.generateNewOrRetrieveMasterKeyFromFile());
+                put("key", masterKeyService.getOrCreateMasterKey()); // MongoDB expects the key name to be "key" when using a local KMS provider
             }});
         }};
     }
