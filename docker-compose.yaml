@@ -12,6 +12,23 @@ services:
       - ./software/mongo_crypt_shared_v1-linux-x86_64-enterprise-ubuntu2204-8.0.3/lib/mongo_crypt_v1.so:/usr/local/lib/mongo_crypt_v1.so
     networks:
       - mongo-net
+  vault:
+    image: hashicorp/vault:latest
+    ports:
+      - "8200:8200"
+    environment:
+      - VAULT_ADDR=$VAULT_ADDR
+      - VAULT_API_ADDR=$VAULT_API_ADDR
+    #    command: server -config=/vault/config/vault-config.hcl
+    command: server
+    cap_add:
+      - IPC_LOCK
+    volumes:
+      - ./app/vault/raft/config:/vault/config
+      - ./app/vault/raft/data:/vault/data
+    networks:
+      - vault-network
 
 networks:
   mongo-net:
+  vault-network:
