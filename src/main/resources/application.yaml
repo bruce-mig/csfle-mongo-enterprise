@@ -1,16 +1,32 @@
 spring:
   application:
     name: mongodb-csfle
+  config:
+    import: vault://
   data:
     mongodb:
       vault:
-        uri: ${VAULT_URI}
+        uri: ${MONGO_VAULT_URI}
       storage:
         uri: ${STORAGE_URI}
       database: ${MONGODB_DBNAME}
       username: ${MONGODB_USER}
       password: ${MONGODB_PASSWORD}
       authentication-database: ${MONGODB_AUTHDB_NAME}
+  cloud:
+    vault:
+      host: ${VAULT_HOST}
+      port: ${VAULT_PORT}
+      scheme: http
+      uri: ${HASHICORP_VAULT_URI}
+      connection-timeout: 5000
+      read-timeout: 15000
+      token: ${VAULT_TOKEN}
+      kv:
+        backend: kv
+        default-context: csfle
+        enabled: true
+      enabled: true
 crypt:
   shared:
     lib:
@@ -26,13 +42,16 @@ mongodb:
   master:
     key:
       file:
-        path: ./master-key.txt
+        path: ${FILE_MASTERKEY_PATH}
+      vault:
+        path: ${VAULT_MASTERKEY_PATH}
 logging:
   level:
     root: INFO
     org:
       springframework:
         jdbc: INFO
+        vault: DEBUG
     com:
       github:
         bruce_mig:
