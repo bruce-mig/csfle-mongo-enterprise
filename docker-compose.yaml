@@ -1,6 +1,6 @@
 services:
   mongodb:
-    image: mongodb/mongodb-enterprise-server:latest
+    image: mongodb/mongodb-enterprise-server:7.0.22-ubuntu2204
     container_name: mongo_db
     ports:
       - "27017:27017"
