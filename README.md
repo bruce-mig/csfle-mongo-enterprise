@@ -17,12 +17,12 @@ Here are a few features in this repository:
 - Automated data encryption keys generation or retrieval.
 - SpEL Evaluation Extension.
 - Auto-implemented repositories.
-- Open API documentation 3.0.1.
+- Open API documentation.
 
 # Prerequisites
 
 - Java 21
-- Spring Boot 3.3.5
+- Spring Boot
 - [MongoDB Cluster](https://www.mongodb.com/atlas/database) v7.0.2 or higher.
 - [MongoDB Automatic Encryption Shared Library](https://www.mongodb.com/docs/manual/core/queryable-encryption/reference/shared-library/#download-the-automatic-encryption-shared-library)
   v7.0.2 or higher.
