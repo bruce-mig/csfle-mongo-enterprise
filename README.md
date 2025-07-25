@@ -31,7 +31,7 @@ Here are a few features in this repository:
 
 Update the [application.yaml](src%2Fmain%2Fresources%2Fapplication.yaml) with your
 [MongoDB URIs](https://github.com/MaBeuLux88/mongodb-java-spring-boot-csfle#mongodb) and
-[MongoDB Automatic Encryption Shared library path](https://github.com/bruce-mig/mongodb-csfle#mongodb-automatic-encryption-shared-library).
+[MongoDB Automatic Encryption Shared library path](https://github.com/bruce-mig/csfle-mongo-enterprise#mongodb-automatic-encryption-shared-library).
 
 For Linux and macOS.
 
