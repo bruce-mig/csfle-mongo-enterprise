@@ -13,7 +13,7 @@ services:
     networks:
       - mongo-net
   vault:
-    image: hashicorp/vault:latest
+    image: hashicorp/vault:1.20
     ports:
       - "8200:8200"
     environment:
